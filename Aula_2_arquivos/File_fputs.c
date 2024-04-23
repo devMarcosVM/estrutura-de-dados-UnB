@@ -1,23 +1,24 @@
 /* Receives strings from keyboard and writes them to file */
 #include <stdio.h>
-main( )
+int main()
 {
   FILE *fp;
-  char s[80];
+  char s[100];
   fp = fopen ( "POEM.TXT", "w" ) ;
   if ( fp == NULL )
   {
     puts ( "Cannot open file" ) ;
-    system("pause");
     exit(0) ;
   }
   printf ( "\nEnter a few lines of text:\n" ) ;
-  while ( strlen ( gets ( s ) ) > 0 )
+  scanf("%s",s);
+  while (strcmp(s,"fim") != 0)
   {
+    printf("%d\n", strlen(s));
     fputs ( s, fp ) ;
     fputs ( "\n", fp ) ;
-  }
+    scanf("%s",s);
+  } 
   fclose ( fp );
-  system("pause");
+  return 0;
 }
-  
